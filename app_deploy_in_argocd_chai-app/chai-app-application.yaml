@@ -28,7 +28,7 @@ spec:
     path: app_deploy_in_argocd_chai-app # Path within the repo where manifests are located
     directory:
       # These bootstrap resources belong in argocd and are managed separately from the app workload.
-      exclude: '{chai-app-project.yaml,chai-app-application.yaml}'
+      exclude: '{chai-app-project.yaml,chai-app-application.yaml,kustomization.yaml,secret-image-updater-git.yaml}'
   destination:
     server: https://172.18.0.4:6443 # Kubernetes API server address (in-cluster)
     namespace: chai-app # Target namespace (application in argocd) for apps in this Project
