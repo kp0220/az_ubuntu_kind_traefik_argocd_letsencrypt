@@ -11,6 +11,15 @@ metadata:
     notifications.argoproj.io/subscribe.on-health-degraded.email: "heeni.patel@gmail.com"  # you can add multiple email ids separated by comma like "<receiver@example.com>, <receiver2@example.com>"
     # Subscribe to notifications when the app is successfully deployed.
     notifications.argoproj.io/subscribe.on-deployed.email: "heeni.patel@gmail.com" # you can add multiple email ids separated by comma like "<receiver@example.com>, <receiver2@example.com>"
+    # Assign alias 'chai-app' to your image
+    argocd-image-updater.argoproj.io/image-list: chai-app=kp0220/chai-devops # Maps the image alias 'chai-app' to your DockerHub image
+
+    # Use git write-back
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argocd-image-updater-git-creds # Configures image updater to write changes back to Git using provided secret
+
+    # Update strategy for chai-app image
+    argocd-image-updater.argoproj.io/chai-app.update-strategy: semver # Uses semantic versioning for image updates
+
 spec:
   project: chai-app-project # ArgoCD project this app belongs to
   source:
