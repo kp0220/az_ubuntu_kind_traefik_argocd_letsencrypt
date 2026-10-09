@@ -29,7 +29,7 @@ spec:
       # Container name within the Pod.
       - name: chai-app
         # Container image and version to deploy.
-        image: kp0220/chai-devops:latest
+        image: kp0220/chai-devops:v1.0.0
         # Ports exposed by the container.
         ports:
         # Application listens on port 80; the Service targets this port.
