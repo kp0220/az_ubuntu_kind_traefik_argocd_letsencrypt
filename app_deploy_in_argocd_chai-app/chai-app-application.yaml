@@ -11,14 +11,15 @@ metadata:
     notifications.argoproj.io/subscribe.on-health-degraded.email: "heeni.patel@gmail.com"  # you can add multiple email ids separated by comma like "<receiver@example.com>, <receiver2@example.com>"
     # Subscribe to notifications when the app is successfully deployed.
     notifications.argoproj.io/subscribe.on-deployed.email: "heeni.patel@gmail.com" # you can add multiple email ids separated by comma like "<receiver@example.com>, <receiver2@example.com>"
-    # Assign alias 'chai-app' to your image
-    argocd-image-updater.argoproj.io/image-list: chai-app=kp0220/chai-devops # Maps the image alias 'chai-app' to your DockerHub image
 
-    # Use git write-back
-    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argocd-image-updater-git-creds # Configures image updater to write changes back to Git using provided secret
-
-    # Update strategy for chai-app image
-    argocd-image-updater.argoproj.io/chai-app.update-strategy: semver # Uses semantic versioning for image updates
+    # Image Updater configuration for Docker Hub image automation.
+    # The alias must match the image name in the Deployment and the tag pattern must be explicit.
+    argocd-image-updater.argoproj.io/image-list: chai-app=kp0220/chai-devops
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argocd-image-updater-git-creds
+    argocd-image-updater.argoproj.io/git-branch: main
+    argocd-image-updater.argoproj.io/chai-app.update-strategy: semver
+    argocd-image-updater.argoproj.io/chai-app.allow-tags: regexp:^v[0-9]+\.[0-9]+\.[0-9]+$
+    argocd-image-updater.argoproj.io/chai-app.ignore-tags: latest,dev
 
 spec:
   project: chai-app-project # ArgoCD project this app belongs to
