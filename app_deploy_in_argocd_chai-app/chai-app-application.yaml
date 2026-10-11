@@ -14,7 +14,7 @@ metadata:
 
     # Image Updater configuration for Docker Hub image automation.
     # The alias must match the image name in the Deployment and the tag pattern must be explicit.
-    argocd-image-updater.argoproj.io/image-list: kp0220/chai-devops:v1.0.0      # The image name and tag pattern to be monitored for updates.
+    argocd-image-updater.argoproj.io/image-list: kp0220/chai-devops:v1.x.x      # The image name and tag pattern to be monitored for updates.
     argocd-image-updater.argoproj.io/chai-devops.update-strategy: semver        # The update strategy for the image, in this case, semantic versioning.
     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argocd-image-updater-git-creds   # The write-back method for updating the Git repository, using a Kubernetes secret for credentials.
     argocd-image-updater.argoproj.io/git-branch: main                           # The Git branch to which the updated manifests will be pushed.
