@@ -7,6 +7,9 @@ resources:
   - chai-app-deployment.yml
   - chai-app-service.yml
   - chai-app-secret.yml
+  - chai-app-certificate.yml
+  - chai-app-ingressroute.yml
+  - chai-app-namespace.yaml
 
 # (optional) you can put commonLabels or namespace here if you want
 # commonLabels:
