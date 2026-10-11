@@ -1,0 +1,3 @@
+kustomize:
+  images:
+  - kp0220/chai-devops:v1.1.0
